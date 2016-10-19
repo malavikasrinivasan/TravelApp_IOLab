@@ -8,3 +8,6 @@ class LoginForm(Form):
     password = PasswordField('password', validators=[DataRequired()])
 
 class TripForm(Form):
+    trip_name = StringField('Name of Trip', validators=[DataRequired()])
+    destination = StringField('Destination', validators=[DataRequired()])
+    friend = StringField('Bring a Friend', validators=[DataRequired()])
