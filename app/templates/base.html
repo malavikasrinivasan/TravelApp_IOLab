@@ -1,0 +1,43 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - Happy Feet</title>
+    {% else %}
+    <title>Welcome to Happy Feet!</title>
+    {% endif %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css')  }}">
+  </head>
+
+  <body>
+    <header>
+      {% block header %}
+        <div id="site-title-wrapper">
+          <div id="site-icon-wrapper">
+            <img src = "http://i.huffpost.com/gen/1359953/thumbs/o-PUPPY-10-900.jpg?1">
+          </div>
+          <h3 id="site-title">Happy Feet!</h3>
+        </div>
+      {% endblock %}
+    </header>
+
+    <div id="content">{% block content %}{% endblock %}</div>
+
+    <footer>
+      <p>&copy; Copyright 2016 $$Bills, all rights reserved</p>
+    </footer>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='interactions.js') }}"></script>
+  </body>
+
+
+</html>
