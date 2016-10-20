@@ -11,6 +11,7 @@ def insert_trip(trip_name,destination,username,friend):
     with sql.connect("app.db") as con:
         cur = con.cursor()
         cur.execute("INSERT INTO trips (trip_name,destination,username,friend) VALUES (?,?,?,?)", (trip_name,destination,username,friend))
+        cur.execute("INSERT INTO trips (trip_name,destination,username,friend) VALUES (?,?,?,?)", (trip_name,destination,friend,username))
         con.commit()
 
 def get_trips(user): # For a user, return their trips

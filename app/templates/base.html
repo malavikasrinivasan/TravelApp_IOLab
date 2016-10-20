@@ -30,14 +30,16 @@
       {% endblock %}
     </header>
 
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="content">{% block content %}
+    {% endblock %}
+    </div>
 
-    <footer>
-      <p>&copy; Copyright 2016 $$Bills, all rights reserved</p>
-    </footer>
+
 
     <script type="text/javascript" src="{{ url_for('static', filename='interactions.js') }}"></script>
   </body>
-
+    <footer>
+      <p>&copy; Copyright 2016 $$Bills, all rights reserved</p>
+    </footer>
 
 </html>
