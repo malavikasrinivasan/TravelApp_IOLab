@@ -1,8 +1,8 @@
 import sqlite3 as sql
 
-def insert_customer(company,email):
+def get_users():
     with sql.connect("app.db") as con:
+        con.row_factory = sql.Row # Convert rows into a dictionary format
         cur = con.cursor()
-        cur.execute("INSERT INTO customers (company,email) VALUES (?,?)", (company,email))
-        con.commit()
-
+        result = cur.execute("select * from users").fetchall()
+        return result
