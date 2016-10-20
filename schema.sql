@@ -7,11 +7,11 @@ drop table if exists trips;
 -- );
 
 create table trips (
-	trip_number integer not null,
+	-- trip_number integer not null,
 	trip_name text not null,
 	destination text not null,
 	username text not null,
 	friend text not null,
 	foreign key(username) references users(username),
-	primary key(trip_number, username)
+	primary key(trip_name, username)
 );

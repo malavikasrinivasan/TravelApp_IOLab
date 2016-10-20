@@ -8,8 +8,9 @@ from .forms import LoginForm, TripForm
 def index():
     username = ''
     if 'username' in session:
-        username = escape(session['username'])
-        return render_template('trips.html', name=username)
+        username = session['username']
+        trips = models.get_trips(username)
+        return render_template('trips.html', name=username, trips=trips)
     else:
         return redirect('/login')
 
@@ -32,7 +33,7 @@ def login():
             if users_dict[username] == password:
                 print("success")
                 session['username'] = username
-                return redirect('/trips')
+                return redirect('/trips') 
             else:
                 print("Incorrect passwords")
                 return render_template('login.html', form=form, msg="Invalid password")
@@ -44,7 +45,27 @@ def login():
 
     return render_template('login.html', form=form)
 
-@app.route('/trips', methods=['GET', 'POST'])
+@app.route('/create_trip', methods=['GET', 'POST'])
+def create_trip():
+    form = TripForm()
+    if form.validate_on_submit():
+        trip_name = form.trip_name.data
+        destination = form.destination.data
+        username = session['username']
+        friend = form.friend.data
+        # print(trip_name, destination, friend)
+        models.insert_trip(trip_name,destination,username,friend) 
+        return redirect('/trips')
+    return render_template('create_trip.html', form=form)
+
+@app.route('/trips')
 def trips():
     username = session['username']
-    return render_template('trips.html', name=username)
+    # TODO: display all trips
+    trips = models.get_trips(username)
+    print(trips)
+    return render_template('trips.html', name=username, trips=trips)
+
+@app.route('/create_trip_button')
+def create_trip_button():
+    return redirect(url_for('create_trip'))

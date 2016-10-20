@@ -3,8 +3,27 @@
 	Trips
 {% endblock %}
 
-
 {% block content %}
 <h1> Hi {{ name }} </h1>
-<a href="create_trip.html">Create Trip</a>
+<form action="create_trip_button" id="create_trip_button">
+	<input class="action-button" id="create-trip-button" type="submit" value="Create Trip">
+</form>
+
+        <h3>Upcoming Trips!</h3>
+        <table>
+          <thead>
+            <tr>
+              <th data-field="trip_name">Name of Trip</th>
+              <th data-field="destination">Destination</th>
+              <th data-field="friend">Travel Buddy</th>
+            </tr>
+          </thead>
+          {% for trip in trips %}
+            <tr>
+              <td>{{ trip['trip_name'] }}</td>
+              <td>{{ trip['destination'] }}</td>
+              <td>{{ trip['friend'] }}</td>
+              <!-- <td><a href="{{ url_for('create_trip_button') }}">Create Trip</a></td>    -->
+            </tr>
+          {% endfor %}
 {% endblock %}

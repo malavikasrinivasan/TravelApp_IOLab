@@ -9,7 +9,7 @@
 
 	<div class="navigation">
 		<a href="{{ url_for('trips') }}">Home</a>
-		<a href="{{ url_for('create_trip') }}">Create a Trip</a>
+		<!-- <a href="{{ url_for('create_trip') }}">Create a Trip</a> -->
 	</div>
 {% endblock %}
 
@@ -29,14 +29,15 @@
         	Destination:<br>
           	{{ form.destination(size=120) }}<br>
         </p>
-        <p>
-        	Bring a Friend:<br>
-        	<select name="friend">
-            {% for friend in users %}
-              <option value="{{ friend }}">{{ friend }}</option>
-            {% endfor %} 
-          </select>
-        </p>
+      <label class="survey-item">Choose a Friend<select name="friend"> 
+      <!-- TODO: Populate from user table -->
+        <option value="anna">anna</option>
+        <option value="carlo">carlo</option>
+        <option value="daniel">daniel</option>
+        <option value="malavika">malavika</option>
+        <option value="parv">parv</option>
+        <option value="testuser">testuser</option>
+      </select></label>
       </div>
       <div class="divider"></div>
       <div class="section">
