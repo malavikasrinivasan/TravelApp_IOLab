@@ -48,11 +48,12 @@ def login():
 @app.route('/create_trip', methods=['GET', 'POST'])
 def create_trip():
     form = TripForm()
+    form.get_friends()
     if form.validate_on_submit():
         trip_name = form.trip_name.data
         destination = form.destination.data
         username = session['username']
-        friend = form.friend.data
+        friend = form.friends.data
         # print(trip_name, destination, friend)
         models.insert_trip(trip_name,destination,username,friend) 
         return redirect('/trips')
