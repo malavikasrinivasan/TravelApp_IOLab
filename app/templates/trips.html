@@ -10,12 +10,13 @@
 </form>
 
         <h3>Upcoming Trips!</h3>
-        <table>
+        <table id="trips">
           <thead>
             <tr>
               <th data-field="trip_name">Name of Trip</th>
               <th data-field="destination">Destination</th>
               <th data-field="friend">Travel Buddy</th>
+              <th id="remove-button"><th>
             </tr>
           </thead>
           {% for trip in trips %}
@@ -23,8 +24,10 @@
               <td>{{ trip['trip_name'] }}</td>
               <td>{{ trip['destination'] }}</td>
               <td>{{ trip['friend'] }}</td>
-              <!-- <td><a href="{{ url_for('create_trip_button') }}">Create Trip</a></td>    -->
+              <td>
+                <a href="{{ url_for('remove', value=trip['trip_name']) }}">Remove</a>
+              </td>
             </tr>
-          </table>
           {% endfor %}
+          </table>
 {% endblock %}

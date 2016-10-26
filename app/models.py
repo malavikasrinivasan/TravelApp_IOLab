@@ -24,6 +24,14 @@ def get_trips(user): # For a user, return their trips
         result = cur.execute(sql_query).fetchall()
         print(result)
     return result
+
+def remove_trip(trip_name):
+    with sql.connect("app.db") as con:
+        con.row_factory = sql.Row
+        cur = con.cursor()
+        sql_query = "DELETE from trips where trip_name = '" + trip_name + "'"
+        cur.execute(sql_query)
+        con.commit()
     
 # def get_usernames():	# To get all usernames for choosing friends
 #     with sql.connect("app.db") as con:
