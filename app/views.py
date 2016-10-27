@@ -70,3 +70,10 @@ def trips():
 @app.route('/create_trip_button')
 def create_trip_button():
     return redirect(url_for('create_trip'))
+
+@app.route('/remove/<value>', methods=['GET', 'POST'])
+def remove(value):
+    form = TripForm()
+    models.remove_trip(value)
+    return redirect('/trips')
+    # return render_template('trips.html', form=form)
