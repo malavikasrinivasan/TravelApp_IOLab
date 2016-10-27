@@ -13,11 +13,12 @@ class TripForm(Form):
     destination = StringField('Destination', validators=[DataRequired()])
     friends = SelectField('Bring a Friend')
 
-    def get_friends(self):
+    def get_friends(self, username):
         with sql.connect("app.db") as con:
             con.row_factory = sql.Row
             cur = con.cursor()
-            result = cur.execute("select username from users").fetchall()
+            sql_query = "select username from users where username !='" + username + "'"
+            result = cur.execute(sql_query).fetchall()
             friends = [(user['username'], user['username']) for idx, user in enumerate(result)]
             self.friends.choices = friends
 
