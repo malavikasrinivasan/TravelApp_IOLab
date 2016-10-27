@@ -77,3 +77,8 @@ def remove(value):
     models.remove_trip(value)
     return redirect('/trips')
     # return render_template('trips.html', form=form)
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect('/')

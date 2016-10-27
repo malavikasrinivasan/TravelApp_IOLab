@@ -18,14 +18,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css')  }}">
   </head>
 
-  <body>
+  <body class="text-center">
     <header>
       {% block header %}
-        <div id="site-title-wrapper">
-          <div id="site-icon-wrapper">
-            <img src = "http://i.huffpost.com/gen/1359953/thumbs/o-PUPPY-10-900.jpg?1">
+        <div id="site-title-wrapper" class="navbar navbar-default">
+          <div id="site-icon-wrapper" class="navbar-left">
+            <img id= "site-logo" src = "https://s-media-cache-ak0.pinimg.com/564x/bf/80/88/bf808800e8e1c409eab2fba053bfe7ca.jpg">
           </div>
           <h3 id="site-title">Happy Feet!</h3>
+          <div id="site-nav" class="pull-right">
+          {% block login_out %} {% endblock %}
+          </div>
         </div>
       {% endblock %}
     </header>
@@ -38,8 +41,8 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='interactions.js') }}"></script>
   </body>
-    <footer>
+  <footer class="footer">
       <p>&copy; Copyright 2016 $$Bills, all rights reserved</p>
-    </footer>
+  </footer>
 
 </html>

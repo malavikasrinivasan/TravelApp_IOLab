@@ -3,14 +3,20 @@
 	Trips
 {% endblock %}
 
+{% block login_out %}
+  <form action="logout" id="logout">
+    <input class="navbar-btn" id="logout-button" type="submit" value="Logout">
+  </form>
+{% endblock %}
+
 {% block content %}
-<h1> Hi {{ name }} </h1>
+<h1> Hi {{ name }}! </h1>
 <form action="create_trip_button" id="create_trip_button">
 	<input class="action-button" id="create-trip-button" type="submit" value="Create Trip">
 </form>
 
-        <h3>Upcoming Trips!</h3>
-        <table id="trips">
+        <h3>Here are your upcoming trips!</h3>
+        <table id="trips" class="table">
           <thead>
             <tr>
               <th data-field="trip_name">Name of Trip</th>

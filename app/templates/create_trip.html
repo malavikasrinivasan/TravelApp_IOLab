@@ -4,6 +4,12 @@
 	create_trip
 {% endblock %}
 
+{% block login_out %}
+  <form action="logout" id="logout">
+    <input class="navbar-btn" id="logout-button" type="submit" value="Logout">
+  </form>
+{% endblock %}
+
 {% block header %}
 	{{ super() }}
 
